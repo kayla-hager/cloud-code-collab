@@ -13,6 +13,7 @@ public with sharing class AccountHelper {
             if (acc.Industry != null) {
             acc.Description = 'Account is '+ acc.Industry;
 
+            
             } else {
                 acc.Description = 'Missing Industry'; 
             }
