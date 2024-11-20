@@ -7,12 +7,18 @@ public with sharing class AccountHelper {
      * @param accountIds The set of Account Ids to query
      */
     public static void updateAccountDescriptions(Set<Id> accountIds) {
-        List<Account> accountsToUpdate = [SELECT Id, Description FROM Account WHERE Id IN :accountIds];
+        List<Account> accountsToUpdate = [SELECT Id, Description, Industry FROM Account WHERE Id IN :accountIds AND Description = null];
 
         for (Account acc: accountsToUpdate) {
-            acc.Description = 'Updated Description';
-        }
+            if (acc.Industry != null) {
+            acc.Description = 'Account is '+ acc.Industry;
+
+            
+            } else {
+                acc.Description = 'Missing Industry'; 
+            }
+        } 
 
         update accountsToUpdate;
-    }
+    } 
 }
