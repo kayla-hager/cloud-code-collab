@@ -21,4 +21,8 @@ public with sharing class AccountHelper {
 
         update accountsToUpdate;
     } 
+
+    public static void newMethod() {
+        //code goes here
+    }
 }
